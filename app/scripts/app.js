@@ -14,20 +14,23 @@ var app = angular.module('angNewsApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ]);
+    'ngTouch',
+    'firebase'
+]);
 
-  app.config(function ($routeProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/posts.html',
-        controller: 'PostsCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+        .when('/', {
+            templateUrl: 'views/posts.html',
+            controller: 'PostsCtrl'
+        })
+        .when('/posts/:postId', {
+            templateUrl: 'views/showpost.html',
+            controller: 'PostViewCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+})
+
+.constant('FIREBASE_URL','https://luminous-fire-2026.firebaseio.com/');
