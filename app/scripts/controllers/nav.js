@@ -1,17 +1,17 @@
 'use strict';
 
-app.controller('NavCtrl', function ($scope, $location, Post) {
+app.controller('NavCtrl', function ($scope, $location, Post, Auth) {
     $scope.post = {url: 'http://', title: ''};
 
     $scope.submitPost = function () {
-        Post.create($scope.post).then(function (ref) {
-            $scope.post = {url: 'http://', title: ''};
-            $location.path('/posts/' + ref.name());
-        })
-
+      Post.create($scope.post).then(function (ref) {
+        $location.path('/posts/' + ref.name());
+        $scope.post = {url: 'http://', title: ''};
+      });
     };
 
     $scope.logout = function () {
-        Auth.logout();
+      Auth.logout();
     };
-});
+
+  });
