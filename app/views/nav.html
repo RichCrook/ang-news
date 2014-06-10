@@ -17,6 +17,12 @@
                 <input type="text" class="form-control" placeholder="Link" ng-model="post.url"></div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
+        SIGNED IN{{signedIn()}}
+        <ul class="nav navbar-nav navbar-right" ng-show="signedIn()">
+            <li>
+                <a href="#" ng-click="logout()">Logout</a>
+            </li>
+        </ul>
     </div>
     <!-- /.navbar-collapse -->
 </nav>

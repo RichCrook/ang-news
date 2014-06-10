@@ -10,9 +10,14 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope) {
             return auth.$createUser(user.email, user.password);
         },
         signedIn: function () {
-            return auth.user !== null;
+            console.log(auth.user);
+            if(auth.user !== null){
+                return true;
+            }
+
         },
         logout: function () {
+            console.log(auth.user);
             auth.$logout();
         }
     };
@@ -20,6 +25,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope) {
     $rootScope.signedIn = function () {
         return Auth.signedIn();
     };
+
 
     return Auth;
 });
